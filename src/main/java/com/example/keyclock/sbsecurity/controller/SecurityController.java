@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.security.RolesAllowed;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,30 +20,31 @@ public class SecurityController {
     @Autowired
     ISecurityService securityService;
 
-    List<Employee> employees=new ArrayList<>();
+    List<Employee> employees = new ArrayList<>();
 
     @PostConstruct
-    public void employeesInsert(){
-        employees.add(new Employee(1,"Prashant","prasg@gmail.com",24000,"9008776655"));
-        employees.add(new Employee(2,"Ajit","ajit@gmail.com",40000,"9008776655"));
-        employees.add(new Employee(3,"praveen","praveen@gmail.com",30000,"9008776655"));
+    public void employeesInsert() {
+        employees.add(new Employee(1, "Prashant", "prasg@gmail.com", 24000, "9008776655"));
+        employees.add(new Employee(2, "Ajit", "ajit@gmail.com", 40000, "9008776655"));
+        employees.add(new Employee(3, "praveen", "praveen@gmail.com", 30000, "9008776655"));
         securityService.saveAll(employees);
+
     }
 
     @GetMapping("/getMessage")
-    public String getMessage(){
+    public String getMessage() {
         return "Hello KeyCloak Spring-Security Application";
     }
 
     @GetMapping("/getall")
 
-    public List<Employee> getAllEmp(){
+    public List<Employee> getAllEmp() {
         return securityService.getAllEmp();
     }
 
     @GetMapping("/get/{id}")
 
-    public Optional<Employee> getOneEmp(@PathVariable("id") int id){
+    public Optional<Employee> getOneEmp(@PathVariable("id") int id) {
         return securityService.getOneEmp(id);
     }
 
