@@ -33,17 +33,17 @@ public class SecurityController {
 
     @GetMapping("/getMessage")
     public String getMessage(){
-        return "Hello KeyClock Spring-Security Application";
+        return "Hello KeyCloak Spring-Security Application";
     }
 
-    @GetMapping()
-    @RolesAllowed("admin")
+    @GetMapping("/get1")
+
     public List<Employee> getAllEmp(){
         return securityService.getAllEmp();
     }
 
-    @GetMapping("/{id}")
-    @RolesAllowed("user")
+    @GetMapping("/get/{id}")
+
     public Optional<Employee> getOneEmp(@PathVariable("id") int id){
         return securityService.getOneEmp(id);
     }
