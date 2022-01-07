@@ -36,7 +36,7 @@ public class SecurityController {
         return "Hello KeyCloak Spring-Security Application";
     }
 
-    @GetMapping("/get1")
+    @GetMapping("/getall")
 
     public List<Employee> getAllEmp(){
         return securityService.getAllEmp();
